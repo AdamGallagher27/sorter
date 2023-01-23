@@ -1,7 +1,10 @@
 
 import {React, useState, useEffect} from 'react'
 import './sv.css'
-import {mergeSort} from '../../sorting-algo/SortingAlgo'
+import {mergeSort, bubbleSort} from '../../sorting-algo/SortingAlgo'
+
+
+
 
 
 export const SortingVisualiser = () => {
@@ -43,7 +46,8 @@ export const SortingVisualiser = () => {
       
       </div>
       <div>
-        <button onClick={() => console.log(mergeSort([2, 4, 1, 3, 5]))}>Merge Sort</button>
+        <button onClick={() => setArr(bubbleSort(arr))}>Bubble Sort</button>
+        <button onClick={() => setArr(mergeSort(arr))}>Merge Sort</button>
       </div>
     </>
   )
