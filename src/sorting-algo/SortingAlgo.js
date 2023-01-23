@@ -33,26 +33,44 @@ const topDown = (left, right) => {
 }
 
 
+
+
+
 // bubble sort
-export const bubbleSort = (arr) => {
 
-  let tempArr = arr;
-  let steps = []
+export const bubbleSortAnimations = (arr) => {
+  let animations = []
+  let helperArr = arr.slice()
+  bubbleSort(helperArr, animations)
+  return animations
+}
 
-  for (var i = 0; i < tempArr.length; i++) {
-    for (var j = 0; j < (tempArr.length - i - 1); j++) {
+const bubbleSort = (arr, animations) => {
 
-      if (tempArr[j] > tempArr[j + 1]) {
-        var temp = tempArr[j]
-        tempArr[j] = tempArr[j + 1]
-        tempArr[j + 1] = temp
-        // console.log('state change')
-        // steps.push(tempArr)
+  let x = arr.length - 1
+
+  while (x > 0) {
+    let swapped = false
+    for (let i = 0; i < x; ++i) {
+      animations.push(['comparison1', i, i + 1])
+      animations.push(['comparison2', i, i + 1])
+      if (arr[i] > arr[i + 1]) {
+        swapped = true
+        animations.push(["swap", i, arr[i + 1]])
+        animations.push(["swap", i + 1, arr[i]])
+        swap(arr, i, i + 1);
       }
-      
     }
+      if (!swapped) break 
+      x--
   }
-  console.log(tempArr)
-  return tempArr;
+  console.log(arr)
+  return arr;
+}
+
+function swap(arr, firstIndex, secondIndex) {
+  let temp = arr[firstIndex]
+  arr[firstIndex] = arr[secondIndex]
+  arr[secondIndex] = temp
 }
 
