@@ -1,6 +1,8 @@
 
 import {React, useState, useEffect} from 'react'
 import './sv.css'
+import {mergeSort} from '../../sorting-algo/SortingAlgo'
+
 
 export const SortingVisualiser = () => {
 
@@ -30,13 +32,19 @@ export const SortingVisualiser = () => {
   }
 
   return (
-    <div className='array-container'>
-      {/* renders the array */}
-      {arr.map((value, index) => (
-        <div className='array-bar' key={index} style={{height: `${value}px`}}>
-        </div>
-      ))
-      }
-    </div>
+    <>
+      <div className='array-container'>
+        {/* renders the array */}
+        {arr.map((value, index) => (
+          <div className='array-bar' key={index} style={{height: `${value}px`}}>
+          </div>
+        ))
+        }
+      
+      </div>
+      <div>
+        <button onClick={() => console.log(mergeSort([2, 4, 1, 3, 5]))}>Merge Sort</button>
+      </div>
+    </>
   )
 }
